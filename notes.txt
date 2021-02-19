@@ -1,0 +1,11 @@
+2021-02-19:
+o things to try out:
+    - catboost
+    - adversarial network
+    - categorical feature encoding techniques 
+    - EDA
+    - sklearn's pipeline
+    - bayesian models
+    - shap feature importance
+
+
