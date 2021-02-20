@@ -2,7 +2,23 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
+from sklearn.metrics import roc_curve, roc_auc_score
 
+def plot_roc(y_trues, y_preds, labels, x_max=1.0):
+    fig, ax = plt.subplots()
+    for i, y_pred in enumerate(y_preds):
+        y_true = y_trues[i]
+        fpr, tpr, thresholds = roc_curve(y_true, y_pred)
+        auc = roc_auc_score(y_true, y_pred)
+        ax.plot(fpr, tpr, label='%s; AUC=%.3f' % (labels[i], auc), marker='o', markersize=1)
+
+    ax.legend()
+    ax.grid()
+    ax.plot(np.linspace(0, 1, 20), np.linspace(0, 1, 20), linestyle='--')
+    ax.set_title('ROC curve')
+    ax.set_xlabel('False Positive Rate')
+    ax.set_xlim([-0.01, x_max])
+    _ = ax.set_ylabel('True Positive Rate')
 
 def plot_histograms(data, cols, ncols=5):
     nrows = math.ceil(len(cols) / ncols)
@@ -13,7 +29,7 @@ def plot_histograms(data, cols, ncols=5):
         c = next(colors)["color"]
         sns.histplot(data[col], ax=ax, color=c)
         ax.set_xlabel(col)
-        
+
 def cor_plot(data):
     # Compute the correlation matrix
     corr = data.corr()
