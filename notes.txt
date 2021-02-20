@@ -1,7 +1,7 @@
 2021-02-19:
 o things to try out:
     - catboost
-    - adversarial network
+    - adversarial network 
     - categorical feature encoding techniques 
     - EDA
     - sklearn's pipeline
