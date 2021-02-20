@@ -3,6 +3,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.metrics import roc_curve, roc_auc_score
+import math 
+from math import ceil
 
 def plot_roc(y_trues, y_preds, labels, x_max=1.0):
     fig, ax = plt.subplots()
